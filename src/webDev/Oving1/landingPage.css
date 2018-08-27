@@ -1,0 +1,83 @@
+.grid-container{
+    display: grid;
+    grid-template-areas: 'menuTitle title title title title'
+        'menu laeshyn laeshynDesc zoo zooDesc'
+        'menu laeshyn laeshynDesc zoo zooDesc'
+        'menu laeshyn laeshynDesc zoo zooDesc';
+    grid-template-columns: 10% 25% 20% 25% 20%;
+    grid-gap: 3px;
+    background-color: saddlebrown;
+    padding: 5px;
+    margin-top: 0;
+}
+header{
+    background-color: blue;
+    margin-top: -20px;
+    color: mediumturquoise;
+    text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+}
+footer{
+    font-family: 'Dancing Script', cursive;
+    color: white;
+    background-image: url("stars.jpg");
+    text-align: center;
+
+
+}
+#subHead{
+    margin-top: -8px;
+
+}
+
+#head{
+    margin-bottom:-8px;
+}
+
+.grid-container > div{
+    text-align: left;
+    padding: 0;
+    font-size: 18px;
+    background-color: rgba(255,255,255,0.2);
+}
+
+.MenuTitle{
+    grid-area: menuTitle;
+    font-weight: bold;
+}
+
+.Menu{
+    grid-area: menu;
+}
+
+.Games{
+    grid-area: title;
+    font-weight: bold;
+
+
+}
+
+.Laeshyn{
+    grid-area: laeshyn;
+}
+
+.LaeshynDesc{
+    grid-area: laeshynDesc;
+}
+.TheZoo{
+    grid-area: zoo;
+}
+
+.TheZooDesc{
+    grid-area: zooDesc;
+}
+
+.gameImg{
+    width:100%;
+    height: 100%;
+    margin-right: 2px;
+    border:2px solid black;
+}
