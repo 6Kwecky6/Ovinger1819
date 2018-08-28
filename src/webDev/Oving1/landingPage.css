@@ -1,14 +1,33 @@
-.grid-container{
-    display: grid;
-    grid-template-areas: 'menuTitle title title title title'
+@media (min-width: 600px) {
+    .grid-container{
+        display: grid;
+        grid-template-areas: 'menuTitle title title title title'
         'menu laeshyn laeshynDesc zoo zooDesc'
         'menu laeshyn laeshynDesc zoo zooDesc'
         'menu laeshyn laeshynDesc zoo zooDesc';
-    grid-template-columns: 10% 25% 20% 25% 20%;
-    grid-gap: 3px;
-    background-color: saddlebrown;
-    padding: 5px;
-    margin-top: 0;
+        grid-template-columns: 10% 25% 20% 25% 20%;
+        grid-gap: 3px;
+        background-color: saddlebrown;
+        padding: 5px;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 599px) {
+    .grid-container {
+        display: grid;
+        grid-template-areas: 'title'
+        'laeshyn'
+        'laeshynDesc'
+        'zoo'
+        'zooDesc'
+        'menuTitle'
+        'menu';
+
+        grid-gap: 3px;
+        background-color: saddlebrown;
+        padding: 5px;
+    }
 }
 header{
     background-color: blue;
