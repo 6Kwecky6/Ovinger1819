@@ -67,21 +67,10 @@ public class Oving_2 {
     }
 
     static double odd(double x, int n){
-        if(n>1){
-            double x2 = even(x,n-1);
-            return x2*x;
-        }else{
-            return x;
-        }
+       return  recu2(x*x,(n-1)/2)*x;
     }
 
     static double even(double x, int n){
-        if(n>0){
-            double x2 = odd(x, n-1);
-            return x2*x;
-
-        }else{
-            return 1;
-        }
+       return  recu2(x*x, n/2);
     }
 }

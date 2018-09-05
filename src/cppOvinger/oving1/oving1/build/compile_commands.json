@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/kwecky/Documents/ovingRepo/Ovinger1819/src/cppOvinger/oving1/oving1/build",
+  "command": "/usr/bin/c++     -std=c++1y -Wall -Wextra   -o CMakeFiles/oving1.dir/main.cpp.o -c /home/kwecky/Documents/ovingRepo/Ovinger1819/src/cppOvinger/oving1/oving1/main.cpp",
+  "file": "/home/kwecky/Documents/ovingRepo/Ovinger1819/src/cppOvinger/oving1/oving1/main.cpp"
+}
+]
