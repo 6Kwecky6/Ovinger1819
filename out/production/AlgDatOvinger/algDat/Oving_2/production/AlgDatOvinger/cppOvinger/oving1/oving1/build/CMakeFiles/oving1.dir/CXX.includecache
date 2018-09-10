@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kwecky/Documents/ovingRepo/Ovinger1819/src/cppOvinger/oving1/oving1/main.cpp
+fstream
+-
+iostream
+-
+
