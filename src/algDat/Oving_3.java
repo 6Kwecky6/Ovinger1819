@@ -6,27 +6,29 @@ import java.util.Random;
 public class Oving_3 {
 
     public static void main(String args[]){
-        int[] list = genList(Integer.parseInt(args[0]));
-        int[] pivotList = list;
-        int[] dualList = list;
+	int[] pivotList, dualList;
         Date end;
-        printList(pivotList, 0);
         Date start = new Date();
         int rounds = 0;
         do {
-            pivotList = list;
-            singlePivot(pivotList, 0, dualList.length - 1);
+/*	    for(int i = 0; i<list.length; i++){
+	   System.out.print(list[i]+" ");
+}*/
+            pivotList = genList(Integer.parseInt(args[0]));
+            singlePivot(pivotList, 0, pivotList.length - 1);
             end = new Date();
             rounds++;
+//System.out.println();
         }while(end.getTime()-start.getTime()<1000);
         printList(pivotList, (double)(end.getTime()-start.getTime())/rounds);
         rounds = 0;
         start = new Date();
         do {
-            dualList = list;
+            dualList = genList(Integer.parseInt(args[0]));
             dualPivot(dualList, 0, dualList.length - 1);
             end= new Date();
             rounds++;
+//	System.out.println();
         }while(end.getTime()-start.getTime()<1000);
         printList(dualList, (double)(end.getTime()-start.getTime())/rounds);
 
@@ -49,7 +51,7 @@ public class Oving_3 {
         printList(dualList, (double)(end.getTime()-start.getTime())/rounds);
         System.out.println("-----------------Duplicate value speed--------------");
         int[] dupeList = genDupeList(Integer.parseInt(args[0]));
-        printList(dualList, 0);
+        printList(dupeList, 0);
         int[] singleDupe, doubleDupe;
         start = new Date();
         rounds = 0;
@@ -81,7 +83,7 @@ public class Oving_3 {
                 sorted = false;
             }
         }
-        System.out.println(list[list.length-1] + ". \nUsing "+time+"ms per round.\nIs " + sorted);
+        System.out.println("Using "+time+"ms per round.\nIs " + sorted);
     }
 
     public static void singlePivot(int[] list,  int minIndex, int maxIndex){
@@ -113,9 +115,38 @@ public class Oving_3 {
                 swap(list, tempL, partIndex[0]);
                 partIndex[0]++;
             }else if(list[tempL]>= maxVal){
-                while(list[partIndex[1]--]>maxVal&&tempL<partIndex[1])
+                while(list[partIndex[1]]>maxVal && tempL<partIndex[1]) partIndex[1]--;
                 swap(list, tempL, partIndex[1]);
-                partIndex[1]--;
+		partIndex[1]--;
+                if(list[tempL]<minVal){
+                    swap(list, tempL, partIndex[0]);
+                    partIndex[0]++;
+                }
+            }
+            tempL++;
+        }
+        partIndex[0]--;
+        partIndex[1]++;
+
+        swap(list, minIndex, partIndex[0]);
+        swap(list, maxIndex, partIndex[1]);
+        return partIndex;
+
+    }
+
+/*
+   if(list[minIndex]>list[maxIndex]){
+            swap(list, minIndex, maxIndex);
+        }
+        int[] partIndex = {minIndex+1, maxIndex-1};
+        int tempL = minIndex+1,minVal = list[partIndex[0]], maxVal = list[partIndex[1]];
+        while(tempL<=partIndex[1]){
+            if(list[tempL]<minVal){
+                swap(list, tempL, partIndex[0]);
+                partIndex[0]++;
+            }else if(list[tempL]>= maxVal){
+                while(list[--partIndex[1]]>maxVal&&tempL<partIndex[1]);
+                swap(list, tempL, partIndex[1]);
                 if(list[tempL]<minVal){
                     swap(list, tempL, partIndex[0]);
                     partIndex[0]++;
@@ -130,6 +161,7 @@ public class Oving_3 {
         return partIndex;
 
     }
+*/
 
     public static int split(int[] list, int minIndex, int maxIndex){
         int middleIndex = quickFinish(list, minIndex, maxIndex);
