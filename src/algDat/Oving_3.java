@@ -111,13 +111,17 @@ public class Oving_3 {
         int[] partIndex = {minIndex+1, maxIndex-1};
         int tempL = minIndex+1,minVal = list[partIndex[0]], maxVal = list[partIndex[1]];
         while(tempL<=partIndex[1]){
+
             if(list[tempL]<minVal){
                 swap(list, tempL, partIndex[0]);
                 partIndex[0]++;
-            }else if(list[tempL]>= maxVal){
-                while(list[partIndex[1]]>maxVal && tempL<partIndex[1]) partIndex[1]--;
+
+            }if(list[tempL]>= maxVal){
+
+                while(list[partIndex[1]]>maxVal && tempL<partIndex[1]) {partIndex[1]--;}
                 swap(list, tempL, partIndex[1]);
-		partIndex[1]--;
+		        partIndex[1]--;
+
                 if(list[tempL]<minVal){
                     swap(list, tempL, partIndex[0]);
                     partIndex[0]++;
@@ -127,7 +131,6 @@ public class Oving_3 {
         }
         partIndex[0]--;
         partIndex[1]++;
-
         swap(list, minIndex, partIndex[0]);
         swap(list, maxIndex, partIndex[1]);
         return partIndex;
