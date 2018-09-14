@@ -25,7 +25,7 @@ public class Oving_3 {
         start = new Date();
         do {
             dualList = genList(Integer.parseInt(args[0]));
-            dualSplit(dualList, 0, dualList.length - 1);
+            dualPivot(dualList, 0, dualList.length - 1);
             end= new Date();
             rounds++;
 //	System.out.println();
@@ -44,7 +44,7 @@ public class Oving_3 {
         rounds = 0;
         start = new Date();
         do {
-            dualSplit(dualList, 0, dualList.length - 1);
+            dualPivot(dualList, 0, dualList.length - 1);
             end= new Date();
             rounds++;
         }while(end.getTime()-start.getTime()<1000);
@@ -66,7 +66,7 @@ public class Oving_3 {
         start = new Date();
         do {
             doubleDupe = dupeList;
-            dualSplit(doubleDupe, 0, doubleDupe.length - 1);
+            dualPivot(doubleDupe, 0, doubleDupe.length - 1);
             end= new Date();
             rounds++;
         }while(end.getTime()-start.getTime()<1000);
@@ -95,7 +95,7 @@ public class Oving_3 {
         }else quickFinish(list, minIndex, maxIndex);
     }
 
-/*    public static void dualPivot(int[] list, int minIndex, int maxIndex){
+    public static void dualPivot(int[] list, int minIndex, int maxIndex){
         if(minIndex<maxIndex) {
             int[] part = dualSplit(list, minIndex, maxIndex);//index 0 is left, index 1 is right
             dualPivot(list, minIndex, part[0]-1);
@@ -103,9 +103,9 @@ public class Oving_3 {
             dualPivot(list, part[1] +1, maxIndex);
         }
     }
-*/
-    public static void dualSplit(int[] list, int minIndex, int maxIndex){
-/*        if(list[minIndex]>list[maxIndex]){
+
+    public static int[] dualSplit(int[] list, int minIndex, int maxIndex){
+        /*if(list[minIndex]>list[maxIndex]){
             swap(list, minIndex, maxIndex);
         }
         int[] partIndex = {minIndex+1, maxIndex-1};
@@ -130,40 +130,10 @@ public class Oving_3 {
 
         swap(list, minIndex, partIndex[0]);
         swap(list, maxIndex, partIndex[1]);
-        return partIndex;
-*/
-	    if(maxIndex <= minIndex) {
-	        return;
-	    }
-	    if(list[minIndex] > list[maxIndex]) {
-	        swap(list, minIndex, maxIndex);
-	    }
-	    int pivot1 = list[minIndex];
-	    int pivot2 = list[minIndex];
-	    int lt = minIndex + 1;
-	    int gt = maxIndex - 1;
-	    int i = minIndex + 1;
-	    while(i <= gt) {
-	        if(list[i] < pivot1) {
-	            swap(list, i, lt);
-	            lt++;
-	            i++;
-	        } else if(list[i] > pivot2) {
-	            swap(list, i, gt);
-	            gt--;
-	        } else {
-	            i++;
-	        }
-	    }
-	    swap(list, minIndex, lt-1);
-	    swap(list, gt+1, maxIndex);
-	    lt--;
-	    gt++;
-	    dualSplit(list, minIndex, lt-1);
-	    dualSplit(list, lt+1, gt-1);
-	    dualSplit(list, gt+1, maxIndex);
-	}
+        return partIndex;*/
+		
 
+    }
 
 /*
    if(list[minIndex]>list[maxIndex]){
