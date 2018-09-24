@@ -1,0 +1,102 @@
+package algDat.Oving_5;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Random;
+
+public class Oving5_2 {
+    final int hLength = 5901901;
+    private int[] hashTable = new int[hLength];
+
+    public int genHash(int val){
+        double A = 0.61803399;
+        return (int)(hLength*((val*A)-(int)(val*A)));
+    }
+
+
+    public int probe(int hash, int sHash, int i){
+        int pos =hash%hashTable.length;
+        for (int j = 0; j<i; i++){
+            pos = (pos +sHash)%hLength;
+        }
+        return pos;
+    }
+
+    public int add(int key) {
+        int hash = genHash(key);
+        for (int i = 0; i < hLength; i++) {
+            int j = probe(hash, key%(hLength-1)+1, i);
+            //System.out.println("j value: "+j);
+            if (hashTable[j] == 0) {
+                hashTable[j] = key;
+                return j;
+            } else {
+                System.out.println("Collision on key:\t" + key + "\t--->\t" + hashTable[j]);
+            }
+        }
+        return -1;
+    }
+
+    public int find(int key){
+        int hash = genHash(key);
+        for(int i = 0; i<hLength; i++){
+            int j = probe(hash, i, hLength);
+            if(hashTable[j] == 0){
+                return -2;//not found
+            }
+            if(hashTable[j] == key){
+                return j;
+            }else{
+                System.out.println("Collision on key:\t" + key + "\t--->\t" + hashTable[j]);
+            }
+        }
+        return -1; //Finnes ikke, og fullt
+    }
+    public int[] genTable(){
+        Random rand = new Random();
+        int maxFill = 5000000;
+        int[] tbl = new int[maxFill];
+        for(int i = 0; i<maxFill; i++){
+            tbl[i] = rand.nextInt(2147483646) +1;
+        }
+        return tbl;
+    }
+
+    public static void main(String args[]){
+        Oving5_2 hashtable = new Oving5_2();
+        System.out.println("generating table of numbers...");
+        int[] numbers = hashtable.genTable();
+        int r = 0;
+        double time;
+        Date end;
+        Date start = new Date();
+        System.out.println("Inserting into hash table");
+        do{
+            int[] nwTbl = numbers.clone();
+            for(int i = 0; i<5000000; i++) {
+                hashtable.add(nwTbl[i]);
+            }
+            end= new Date();
+            ++r;
+        }while(end.getTime()-start.getTime() <1000);
+        time = (double)(end.getTime()-start.getTime())/r;
+        System.out.println("Time to fill a hash table with mah own algorithm: " + time + "ms.");
+        r = 0;
+        time =0;
+        Hashtable intern = new Hashtable();
+
+        start = new Date();
+        System.out.println("Inserting into hash table");
+        do{
+            int[] nwTbl = numbers.clone();
+            for(int i = 0; i<5000000; i++) {
+                intern.put(i, nwTbl[i]);
+            }
+            end= new Date();
+            ++r;
+        }while(end.getTime()-start.getTime() <1000);
+        time = (double)(end.getTime()-start.getTime())/r;
+        System.out.println("Time to fill a hash table with javas algorithm: " + time + "ms.");
+    }
+}
