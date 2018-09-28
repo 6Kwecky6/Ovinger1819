@@ -32,7 +32,7 @@ public class Oving5_2 {
                 hashTable[j] = key;
                 return j;
             } else {
-                System.out.println("Collision on key:\t" + key + "\t--->\t" + hashTable[j]);
+                System.out.println("Collision on key:\t" + key + "\t--->\t" + hashTable[j]);//Burde heller satt opp linka lister
             }
         }
         return -1;

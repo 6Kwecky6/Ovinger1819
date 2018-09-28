@@ -23,11 +23,11 @@ public class Oving_5 {
     public int add(String key, String[] hashTab){
         int hash = genHash(key, hashTab.length);
         for(int i = 0; i<hashTab.length; i++){
-            int j = probe(hash, i, hashTab.length);
-            if(hashTab[j] == null){
+            if(hashTab[i] == null){
                 hashTab[j] = key;
                 return j;
             }else{
+		
                 System.out.println("Collision on key:\t" + key + "\t--->\t" + hashTab[j]);
                 coliCount++;
             }
