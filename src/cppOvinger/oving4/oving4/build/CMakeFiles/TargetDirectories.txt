@@ -1,0 +1,3 @@
+/home/kwecky/Documents/ovingRepo/Ovinger1819/src/cppOvinger/oving4/oving4/build/CMakeFiles/rebuild_cache.dir
+/home/kwecky/Documents/ovingRepo/Ovinger1819/src/cppOvinger/oving4/oving4/build/CMakeFiles/oving4.dir
+/home/kwecky/Documents/ovingRepo/Ovinger1819/src/cppOvinger/oving4/oving4/build/CMakeFiles/edit_cache.dir
